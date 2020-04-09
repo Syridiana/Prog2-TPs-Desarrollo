@@ -36,29 +36,71 @@ namespace Entidades
 
         public string BinarioDecimal(string binario)
         {
+            int contador = 0;
+            string resultado;
+            int j = 0;
 
-            return "";
+            for (int i = binario.Length-1; i >=0 ; i--)
+                {
+                    if (binario[i] != '0' && binario[i] != '1')
+                    {
+                        return "Valor inválido";
+                    }
+                    int potenciasDeDos = (int)Math.Pow(2, j);
+                    contador += (int)Char.GetNumericValue(binario, i) * potenciasDeDos;
+                    j++;
+                 } 
+
+            resultado = contador.ToString();
+            return resultado;
         }
 
         public string DecimalBinario(double numero)
         {
-            int num = (int)Math.Abs(numero);
-            StringBuilder binario = new StringBuilder();
-
-            while (num > 0)
+            if(numero%1>0 || numero<0)
             {
-                binario.Append(num % 2);
-                num -= num % 2;
-                num /= 2;
+                return "Valor inválido";
             }
+            else
+            {
+                int num = (int) numero;
+                StringBuilder binario = new StringBuilder();
 
-            return binario.ToString(); //queda revertido el numero solucionar
+                while (num > 0)
+                {
+                    binario.Insert(0, (num % 2));
+                    num -= num % 2;
+                    num /= 2;
+                }
+
+                return binario.ToString();
+            }
+            
         }
 
         public string DecimalBinario(string numero)
         {
+            this.SetNumero = numero;
 
-            return "";
+            if (this.numero % 1 > 0 || this.numero < 0)
+            {
+                return "Valor inválido";
+            }
+            else
+            {
+                int num = (int)this.numero;
+                StringBuilder binario = new StringBuilder();
+
+                while (num > 0)
+                {
+                    binario.Insert(0, (num % 2));
+                    num -= num % 2;
+                    num /= 2;
+                }
+
+                return binario.ToString();
+            }
+
         }
 
         public static double operator +(Numero n1, Numero n2)

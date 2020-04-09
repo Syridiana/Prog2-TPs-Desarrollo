@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    static class Calculadora
+    public static class Calculadora
     {
         private static string ValidarOperador(string operador)
         {
@@ -20,27 +20,29 @@ namespace Entidades
             }
         }
 
-        public static double Operador(Numero num1, Numero num2, string operador)
+        public static double Operar(Numero num1, Numero num2, string operador)
         {
+
+            string op = Calculadora.ValidarOperador(operador);
+
             if (operador == "+")
             {
-
-                return 0;
+                return num1 + num2;
             }
             else if (operador == "-")
             {
-                return 0;
+                return num1 - num2;
 
             }
             else if (operador == "*")
             {
-                return 0;
+                return num1 * num2;
             }
-            else if (operador == "/")
+            else
             {
-                return 0;
+                return num1 / num2;
             }
-                        return 0;
+            
         }
 
 
